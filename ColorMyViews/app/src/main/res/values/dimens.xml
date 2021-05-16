@@ -3,4 +3,6 @@
     <dimen name="layout_margin">16dp</dimen>
     <dimen name="wide_margin">16dp</dimen>
     <dimen name="margin_half">8dp</dimen>
+    <dimen name="large_text_size">24sp</dimen>
+    <dimen name="small_text_size">16sp</dimen>
 </resources>

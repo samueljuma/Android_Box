@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     }
     private fun setListeners() {
         val clickableViews:List<View> = listOf(box_one,box_two,
-            box_three,box_four,box_five)
+            box_three,box_four,box_five, redBtn,yellowBtn,greenBtn)
         for(item in clickableViews){
             item.setOnClickListener { makeColored(it) }
         }
@@ -34,6 +34,10 @@ class MainActivity : AppCompatActivity() {
                 box_three.id -> view.setBackgroundResource(android.R.color.holo_green_light)
                 box_four.id -> view.setBackgroundResource(android.R.color.holo_green_dark)
                 box_five.id -> view.setBackgroundResource(android.R.color.holo_green_light)
+                //custom colors
+                redBtn.id -> box_three.setBackgroundResource(R.color.my_red)
+                yellowBtn.id -> box_four.setBackgroundResource(R.color.my_yellow)
+                greenBtn.id -> box_five.setBackgroundResource(R.color.my_green)
 
                 else -> view.setBackgroundColor(Color.LTGRAY)
             }
