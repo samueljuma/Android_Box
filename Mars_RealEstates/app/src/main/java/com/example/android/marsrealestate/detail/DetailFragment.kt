@@ -20,9 +20,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.library.baseAdapters.R
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.android.marsrealestate.databinding.FragmentDetailBinding
+import com.example.android.marsrealestate.databinding.GridViewItemBinding
 
 /**
  * This [Fragment] will show the detailed information about a selected piece of Mars real estate.
@@ -33,7 +36,7 @@ class DetailFragment : Fragment() {
 
         @Suppress("UNUSED_VARIABLE")
         val application = requireNotNull(activity).application
-        val binding = FragmentDetailBinding.inflate(inflater)
+        val binding = GridViewItemBinding.inflate(inflater)
         binding.lifecycleOwner = this
         return binding.root
     }
