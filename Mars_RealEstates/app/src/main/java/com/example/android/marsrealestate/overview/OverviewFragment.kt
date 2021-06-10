@@ -51,7 +51,9 @@ class OverviewFragment : Fragment() {
         // Giving the binding access to the OverviewViewModel
         binding.viewModel = viewModel
 
-        binding.photosGrid.adapter = PhotoGridAdapter()
+        binding.photosGrid.adapter = PhotoGridAdapter(PhotoGridAdapter.MarsPropertyListener { marsProperty ->
+           viewModel.displayPropertyDetails(marsProperty)
+        })
 
         setHasOptionsMenu(true)
         return binding.root

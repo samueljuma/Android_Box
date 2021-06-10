@@ -26,6 +26,9 @@
         <variable
             name="property"
             type="com.example.android.marsrealestate.network.MarsProperty" />
+        <variable
+            name="clickListener"
+            type="com.example.android.marsrealestate.overview.PhotoGridAdapter.MarsPropertyListener" />
     </data>
 
     <ImageView
