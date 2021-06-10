@@ -31,20 +31,21 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.lang.Exception
 
+enum class MarsApiStatus {LOADING, ERROR, DONE}
 /**
  * The [ViewModel] that is attached to the [OverviewFragment].
  */
 class OverviewViewModel : ViewModel() {
 
     // status live data
-    private val _status = MutableLiveData<String>()
-    val status: LiveData<String>
+    private val _status = MutableLiveData<MarsApiStatus>()
+    val status: LiveData<MarsApiStatus>
         get() = _status
 
     //property live data
-    private val _property = MutableLiveData<MarsProperty>()
-    val property: LiveData<MarsProperty>
-        get() = _property
+    private val _properties = MutableLiveData<List<MarsProperty>>()
+    val properties: LiveData<List<MarsProperty>>
+        get() = _properties
 
     //coroutine job and scope
     private var viewModelJob = Job()
@@ -64,12 +65,15 @@ class OverviewViewModel : ViewModel() {
         coroutineScope.launch {
             var getPropertiesDeferred = MarsApi.retrofitService.getPropertiesAsync()
             try {
+                _status.value = MarsApiStatus.LOADING
                 var listResult = getPropertiesDeferred.await()
+                _status.value = MarsApiStatus.DONE
                 if(listResult.isNotEmpty()){
-                   _property.value = listResult[0]
+                   _properties.value = listResult
                 }
             }catch (e: Exception){
-                _status.value = "Failure: ${e.message}"
+                _status.value = MarsApiStatus.ERROR
+                _properties.value = ArrayList()
             }
         }
     }
