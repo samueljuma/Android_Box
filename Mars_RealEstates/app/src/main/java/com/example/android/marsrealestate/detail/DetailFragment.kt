@@ -36,8 +36,15 @@ class DetailFragment : Fragment() {
 
         @Suppress("UNUSED_VARIABLE")
         val application = requireNotNull(activity).application
-        val binding = GridViewItemBinding.inflate(inflater)
+        val binding = FragmentDetailBinding.inflate(inflater)
         binding.lifecycleOwner = this
+
+        //get selectedProperty argument
+        val marsProperty = DetailFragmentArgs.fromBundle(arguments!!).selectedProperty
+        //get the viewModelFactory
+        val viewModelFactory = DetailViewModelFactory(marsProperty,application)
+
+        binding.viewModel = ViewModelProvider(this, viewModelFactory).get(DetailViewModel::class.java)
         return binding.root
     }
 }

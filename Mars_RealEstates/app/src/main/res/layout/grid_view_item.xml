@@ -30,14 +30,14 @@
             name="clickListener"
             type="com.example.android.marsrealestate.overview.PhotoGridAdapter.MarsPropertyListener" />
     </data>
-
     <ImageView
         android:id="@+id/mars_image"
         android:layout_width="match_parent"
         android:layout_height="170dp"
         android:scaleType="centerCrop"
         android:adjustViewBounds="true"
-        android:padding="2dp"
         app:imageUrl="@{property.imgSrcUrl}"
+        android:padding="2dp"
+        android:onClick="@{() ->clickListener.onCLick(property)}"
         tools:src="@tools:sample/backgrounds/scenic"/>
 </layout>
