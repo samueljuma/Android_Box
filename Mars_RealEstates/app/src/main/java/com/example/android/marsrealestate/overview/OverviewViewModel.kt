@@ -47,6 +47,20 @@ class OverviewViewModel : ViewModel() {
     val properties: LiveData<List<MarsProperty>>
         get() = _properties
 
+    /**
+     * Property details navigation utilities
+     */
+    private val _navigateToPropertyDetails=MutableLiveData<MarsProperty>()
+    val navigateToPropertyDetails: LiveData<MarsProperty>
+        get() = _navigateToPropertyDetails
+
+    fun displayPropertyDetails (marsProperty: MarsProperty){
+        _navigateToPropertyDetails.value = marsProperty
+    }
+    fun displayPropertyDetailsCompleted (){
+        _navigateToPropertyDetails.value= null
+    }
+
     //coroutine job and scope
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob +Dispatchers.Main)
